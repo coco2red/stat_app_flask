@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Frequency Graph</title>
+    <!-- Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Age Frequency Graph
+          </h1>
+          <h2 class="subtitle">
+            Visualization of student age distribution
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mt-5">
+        <h3 class="title is-4">Graph of Ages</h3>
+        <figure class="image is-4by3">
+            <img src="{{ url_for('graph') }}" alt="Age Frequency Graph">
+        </figure>
+    </div>
+    <div class="column is-full">
+        <div class="box has-text-centered">
+            <a href="{{ url_for('index') }}" class="button is-link is-medium">View index</a>
+        </div>
+    </div>
+
+    <footer class="footer mt-5">
+        <div class="content has-text-centered">
+            <p>Developed with Flask, Bulma, and Bootstrap.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Dashboard</title>
+    <!-- Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Statistics Dashboard
+          </h1>
+          <h2 class="subtitle">
+            Advanced statistics for research purposes
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mt-5">
+        <div class="columns is-multiline">
+            <!-- Existing statistics display (mean, median, etc.) -->
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Mean (Average) Age</h3>
+                    <p class="subtitle">{{ stats.mean }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Median Age</h3>
+                    <p class="subtitle">{{ stats.median }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Mode Age</h3>
+                    <p class="subtitle">{{ stats.mode }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Range of Ages</h3>
+                    <p class="subtitle">{{ stats.range }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Variance of Ages</h3>
+                    <p class="subtitle">{{ stats.variance }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Standard Deviation</h3>
+                    <p class="subtitle">{{ stats.std_dev }}</p>
+                </div>
+            </div>
+            <!-- New statistics for research -->
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Skewness</h3>
+                    <p class="subtitle">{{ stats.skewness }}</p>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="box">
+                    <h3 class="title is-4">Kurtosis</h3>
+                    <p class="subtitle">{{ stats.kurtosis }}</p>
+                </div>
+            </div>
+            <div class="column is-full">
+                <div class="box">
+                    <h3 class="title is-4">95% Confidence Interval for Mean</h3>
+                    <p class="subtitle">{{ stats.conf_interval[0] }} to {{ stats.conf_interval[1] }}</p>
+                </div>
+            </div>
+
+            <!-- Data table section -->
+            <div class="column is-full">
+                <div class="box">
+                    <h3 class="title is-4">Table of Student Ages</h3>
+                    <table class="table is-striped is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for age in ages %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ age }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Link to the graph page -->
+            <div class="column is-full">
+                <div class="box has-text-centered">
+                    <a href="{{ url_for('graph_page') }}" class="button is-link is-medium">View Age Frequency Graph</a>
+                </div>
+            </div>
+            <!-- Link to the discussion page -->
+            <div class="column is-full">
+                <div class="box has-text-centered">
+                    <a href="{{ url_for('discussion') }}" class="button is-link is-medium">Read Discussion on Statistical Analysis</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Developed with Flask, Bulma, and Bootstrap.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
