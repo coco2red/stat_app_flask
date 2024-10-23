@@ -44,7 +44,7 @@ def graph_page():
 @app.route('/discussion')
 def discussion():
     # Read the markdown file and convert it to HTML
-    with open(os.path.join(os.path.dirname(__file__), 'discussion.md'), 'r') as f:
+    with open(os.path.join(os.path.dirname(__file__), '/discussion/discussion.md'), 'r') as f:
         content = f.read()
     # Convert markdown to HTML
     html_content = markdown.markdown(content)
